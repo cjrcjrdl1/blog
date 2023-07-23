@@ -1,32 +1,42 @@
 package com.blog.min.domain.posts;
 
+import com.blog.min.domain.BaseTimeEntity;
+import com.blog.min.domain.member.Member;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
+    @Column(name = "POSTS_ID")
     private Long id;
 
-    @Column(length = 500, nullable = false)
+    @NotNull
+    @Column(length = 500)
     private String title;
 
-    @Column(columnDefinition = "TEXT", nullable = false)
+    @NotNull
+    @Column(columnDefinition = "TEXT")
     private String content;
 
+    @Column
     private String author;
 
-    @Builder
-    public Posts(String title, String content, String author) {
-        this.title = title;
-        this.content = content;
-        this.author = author;
-    }
+    @Column(columnDefinition = "integer default 0", nullable = false)
+    private int view;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID")
+    private Member member;
 
     public void update(String title, String content) {
         this.title = title;
