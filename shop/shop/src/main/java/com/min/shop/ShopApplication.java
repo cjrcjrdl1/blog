@@ -1,13 +1,13 @@
-package com.blog.min;
+package com.min.shop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MinApplication {
+public class ShopApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MinApplication.class, args);
+		SpringApplication.run(ShopApplication.class, args);
 	}
 
 }
