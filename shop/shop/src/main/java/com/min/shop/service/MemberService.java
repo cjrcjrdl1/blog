@@ -1,9 +1,8 @@
 package com.min.shop.service;
 
 import com.min.shop.domain.Member;
-import com.min.shop.repository.MemberRepository;
+import com.min.shop.domain.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,28 +19,28 @@ public class MemberService {
     //회원가입
     @Transactional
     public Long join(Member member) {
-        validateDuplicateMember(member); //중복 회원 검증
+//        validateDuplicateMember(member); //중복 회원 검증
         memberRepository.save(member);
         return member.getId();
     }
 
-    private void validateDuplicateMember(Member member) {
-        List<Member> findMembers = memberRepository.findByName(member.getName());
-        if (!findMembers.isEmpty()) {
-            throw new IllegalStateException("이미 존재하는 회원입니다.");
-        }
-    }
+//    private void validateDuplicateMember(Member member) {
+//        List<Member> findMembers = memberRepository.findByName(member.getName());
+//        if (!findMembers.isEmpty()) {
+//            throw new IllegalStateException("이미 존재하는 회원입니다.");
+//        }
+//    }
 
     //전체 회원 조회
     public List<Member> findMembers() {
         return memberRepository.findAll();
     }
 
-    public Member findOne(Long memberId) {
-        return memberRepository.findOne(memberId);
-    }
 
     public Optional<Member> findByLoginId(String loginId) {
+//        Member member = memberRepository.findByLoginId(loginId)
+//                .orElseThrow(() -> new IllegalArgumentException("해당 맴버가 없습니다. id=" + loginId));
+//        return Optional.of(member);
         return memberRepository.findByLoginId(loginId);
     }
 }

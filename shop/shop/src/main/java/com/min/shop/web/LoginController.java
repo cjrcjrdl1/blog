@@ -36,12 +36,12 @@ public class LoginController {
     public String login(@Validated @ModelAttribute("login") LoginDto form, BindingResult bindingResult,
                         @RequestParam(defaultValue = "/") String redirectURL,
                         HttpServletRequest request) {
+
         if (bindingResult.hasErrors()) {
             return "members/loginForm";
         }
 
         Member loginMember = loginService.login(form.getLoginId(), form.getPassword());
-
         log.info("login {}", loginMember);
 
         if (loginMember == null) {

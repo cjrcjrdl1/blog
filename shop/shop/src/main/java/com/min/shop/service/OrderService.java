@@ -3,7 +3,6 @@ package com.min.shop.service;
 import com.min.shop.domain.*;
 import com.min.shop.domain.item.Item;
 import com.min.shop.repository.ItemRepository;
-import com.min.shop.repository.MemberRepository;
 import com.min.shop.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,7 +24,7 @@ public class OrderService {
     public Long order(Long memberId, Long itemId, int count) {
         
         //엔티티 조회
-        Member member = memberRepository.findOne(memberId);
+        Member member = memberRepository.findById(memberId).get();
         Item item = itemRepository.findOne(itemId);
         
         //배송정보 생성
