@@ -21,19 +21,21 @@ public class MemberController {
 
     @GetMapping(value = "/members/new")
     public String createForm(Model model) {
-        model.addAttribute("memberForm", new MemberForm());
+        model.addAttribute("dto", new MemberRequestDto());
         return "members/createMemberForm";
     }
 
     @PostMapping(value = "/members/new")
-    public String create(@Valid MemberForm form, BindingResult result) {
+    public String create(@Valid MemberRequestDto form, BindingResult result) {
         if (result.hasErrors()) {
             return "members/createMemberForm";
         }
 
         Address address = new Address(form.getCity(), form.getStreet(), form.getZipcode());
         Member member = new Member();
+        member.setLoginId(form.getLoginId());
         member.setName(form.getName());
+        member.setPassword(form.getPassword());
         member.setAddress(address);
 
         memberService.join(member);

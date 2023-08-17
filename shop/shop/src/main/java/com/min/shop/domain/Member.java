@@ -17,7 +17,9 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
+    private String loginId;
     private String name;
+    private String password;
 
     @Embedded
     private Address address;
