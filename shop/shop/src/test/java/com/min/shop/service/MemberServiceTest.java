@@ -1,7 +1,7 @@
 package com.min.shop.service;
 
 import com.min.shop.domain.Member;
-import com.min.shop.repository.MemberRepository;
+import com.min.shop.domain.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,7 +28,7 @@ class MemberServiceTest {
         Long saveId = memberService.join(member);
 
         //then
-        assertEquals(member, memberRepository.findOne(saveId));
+        assertEquals(member, memberRepository.findById(saveId));
     }
 
     @Test
