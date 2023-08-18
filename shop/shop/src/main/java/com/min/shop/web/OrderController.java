@@ -39,7 +39,7 @@ public class OrderController {
                         @RequestParam("itemId") Long itemId,
                         @RequestParam("count") int count) {
         orderService.order(memberId, itemId, count);
-        return "redirect:/orders";
+        return "order/orderSuccess";
     }
 
     @GetMapping(value = "/orders")
