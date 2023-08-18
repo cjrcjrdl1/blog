@@ -28,7 +28,7 @@ public class TestInit {
 
         Book book = new Book();
         book.setName("리팩터링");
-        book.setStockQuantity(10);
+        book.setStockQuantity(100);
         book.setPrice(30000);
         book.setIsbn("1541");
         book.setAuthor("마틴 파울러");

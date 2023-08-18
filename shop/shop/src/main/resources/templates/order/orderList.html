@@ -1,12 +1,15 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header"/>
+<head>
+  <link href="/css/blog.css" rel="stylesheet">
+</head>
 <body>
 <div class="container">
   <div th:replace="fragments/bodyHeader :: bodyHeader"/>
   <div>
     <div>
-      <form th:object="${orderSearch}" class="form-inline">
+      <form th:object="${orderSearch}" class="form-inline mt-5">
         <div class="form-group mb-2">
           <input type="text" th:field="*{memberName}" class="form-control" placeholder="회원명"/>
         </div>
