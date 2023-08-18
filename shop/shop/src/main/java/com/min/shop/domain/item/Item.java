@@ -22,6 +22,8 @@ public abstract class Item {
     private Long id;
 
     private String name;
+    @Column(columnDefinition = "MEDIUMTEXT")
+    private String description;
     private int price;
     private int stockQuantity;
 

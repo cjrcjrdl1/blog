@@ -2,7 +2,7 @@ package com.min.shop.web;
 
 import com.min.shop.domain.item.Book;
 import com.min.shop.domain.item.Item;
-import com.min.shop.service.ItemService;
+import com.min.shop.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ItemController {
 
-    private final ItemService itemService;
+    private final BookService bookService;
 
     @GetMapping(value = "/items/new")
     public String createForm(Model model) {
@@ -33,21 +33,22 @@ public class ItemController {
         book.setStockQuantity(form.getStockQuantity());
         book.setAuthor(form.getAuthor());
         book.setIsbn(form.getIsbn());
+        book.setDescription(form.getDescription());
 
-        itemService.saveItem(book);
+        bookService.saveItem(book);
         return "redirect:/items";
     }
 
     @GetMapping(value = "/items")
     public String list(Model model) {
-        List<Item> items = itemService.findItems();
+        List<Book> items = bookService.findAll();
         model.addAttribute("items", items);
         return "items/itemsList";
     }
 
     @GetMapping(value = "/items/{itemId}/edit")
     public String updateItemForm(@PathVariable("itemId") Long itemId, Model model) {
-        Book item = (Book) itemService.findOne(itemId);
+        Book item = (Book) bookService.findById(itemId);
 
         BookForm form = new BookForm();
         form.setId(item.getId());
@@ -56,6 +57,7 @@ public class ItemController {
         form.setStockQuantity(item.getStockQuantity());
         form.setAuthor(item.getAuthor());
         form.setIsbn(item.getIsbn());
+        form.setDescription(item.getDescription());
 
         model.addAttribute("form", form);
         return "items/updateItemForm";
@@ -74,7 +76,24 @@ public class ItemController {
 //        itemService.saveItem(book);
 
         //변경시 어설프게 컨트롤러에서 엔티티를 생성하지 말고 변경감지 사용하기
-        itemService.updateItem(itemId, form.getName(), form.getPrice(), form.getStockQuantity());
+        bookService.updateItem(itemId, form.getName(), form.getPrice(), form.getStockQuantity());
         return "redirect:/items";
+    }
+
+    @GetMapping("/items/{itemId}")
+    public String item(@PathVariable("itemId") Long itemId, Model model) {
+        Book item = (Book) bookService.findById(itemId);
+
+        BookForm form = new BookForm();
+        form.setId(item.getId());
+        form.setName(item.getName());
+        form.setPrice(item.getPrice());
+        form.setStockQuantity(item.getStockQuantity());
+        form.setAuthor(item.getAuthor());
+        form.setIsbn(item.getIsbn());
+        form.setDescription(item.getDescription());
+
+        model.addAttribute("form", form);
+        return "items/item";
     }
 }
