@@ -9,6 +9,7 @@ public class BookForm {
 
     private Long id;
     private String name;
+    private String description;
     private int price;
     private int stockQuantity;
     private String author;

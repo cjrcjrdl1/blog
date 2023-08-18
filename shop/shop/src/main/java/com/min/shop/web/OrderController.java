@@ -3,8 +3,9 @@ package com.min.shop.web;
 import com.min.shop.domain.Member;
 import com.min.shop.domain.Order;
 import com.min.shop.domain.OrderSearch;
+import com.min.shop.domain.item.Book;
 import com.min.shop.domain.item.Item;
-import com.min.shop.service.ItemService;
+import com.min.shop.service.BookService;
 import com.min.shop.service.MemberService;
 import com.min.shop.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -20,12 +21,12 @@ public class OrderController {
 
     private final OrderService orderService;
     private final MemberService memberService;
-    private final ItemService itemService;
+    private final BookService bookService;
 
     @GetMapping(value = "/order")
     public String createForm(Model model) {
         List<Member> members = memberService.findMembers();
-        List<Item> items = itemService.findItems();
+        List<Book> items = bookService.findAll();
 
         model.addAttribute("members", members);
         model.addAttribute("items", items);

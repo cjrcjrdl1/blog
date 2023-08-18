@@ -1,8 +1,8 @@
 package com.min.shop.service;
 
 import com.min.shop.domain.*;
+import com.min.shop.domain.item.Book;
 import com.min.shop.domain.item.Item;
-import com.min.shop.repository.ItemRepository;
 import com.min.shop.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class OrderService {
 
     private final MemberRepository memberRepository;
     private final OrderRepository orderRepository;
-    private final ItemRepository itemRepository;
+    private final BookRepository bookRepository;
 
     //주문
     @Transactional
@@ -25,15 +25,15 @@ public class OrderService {
         
         //엔티티 조회
         Member member = memberRepository.findById(memberId).get();
-        Item item = itemRepository.findOne(itemId);
-        
+        Book book = bookRepository.findById(itemId).get();
+
         //배송정보 생성
         Delivery delivery = new Delivery();
         delivery.setAddress(member.getAddress());
         delivery.setStatus(DeliveryStatus.READY);
         
         //주문상품 생성
-        OrderItem orderItem = OrderItem.createOrderItem(item, item.getPrice(), count);
+        OrderItem orderItem = OrderItem.createOrderItem(book, book.getPrice(), count);
 
         //주문 생성
         Order order = Order.createOrder(member, delivery, orderItem);
