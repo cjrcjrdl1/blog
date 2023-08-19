@@ -1,6 +1,6 @@
 package com.min.shop.web.member;
 
-import com.min.shop.entity.Member;
+import com.min.shop.entity.member.Member;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

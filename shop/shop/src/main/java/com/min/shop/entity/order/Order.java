@@ -1,5 +1,8 @@
-package com.min.shop.entity;
+package com.min.shop.entity.order;
 
+import com.min.shop.entity.Delivery;
+import com.min.shop.entity.DeliveryStatus;
+import com.min.shop.entity.member.Member;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

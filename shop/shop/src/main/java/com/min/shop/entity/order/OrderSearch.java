@@ -1,4 +1,4 @@
-package com.min.shop.entity;
+package com.min.shop.entity.order;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,7 +1,7 @@
 package com.min.shop.service;
 
-import com.min.shop.entity.Member;
-import com.min.shop.entity.MemberRepository;
+import com.min.shop.entity.member.Member;
+import com.min.shop.entity.member.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -3,11 +3,14 @@ package com.min.shop.service;
 import com.min.shop.entity.*;
 import com.min.shop.entity.item.Book;
 import com.min.shop.entity.item.BookRepository;
+import com.min.shop.entity.member.Member;
+import com.min.shop.entity.member.MemberRepository;
+import com.min.shop.entity.order.Order;
+import com.min.shop.entity.order.OrderItem;
+import com.min.shop.entity.order.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
