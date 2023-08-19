@@ -1,7 +1,6 @@
-package com.min.shop.domain;
+package com.min.shop.entity.item;
 
-import com.min.shop.domain.item.Book;
-import com.min.shop.domain.item.Item;
+import com.min.shop.entity.item.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BookRepository extends JpaRepository<Book, Long> {

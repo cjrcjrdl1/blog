@@ -1,4 +1,4 @@
-package com.min.shop.web;
+package com.min.shop.web.order;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;

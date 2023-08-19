@@ -1,4 +1,4 @@
-package com.min.shop.web;
+package com.min.shop.web.member;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;

@@ -1,6 +1,6 @@
-package com.min.shop.domain.item;
+package com.min.shop.entity.item;
 
-import com.min.shop.domain.Category;
+import com.min.shop.entity.Category;
 import com.min.shop.exception.NotEnoughStockException;
 import jakarta.persistence.*;
 import lombok.Getter;

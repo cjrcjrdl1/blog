@@ -1,10 +1,7 @@
-package com.min.shop.web;
+package com.min.shop.web.order;
 
-import com.min.shop.domain.Member;
-import com.min.shop.domain.Order;
-import com.min.shop.domain.OrderSearch;
-import com.min.shop.domain.item.Book;
-import com.min.shop.domain.item.Item;
+import com.min.shop.entity.Member;
+import com.min.shop.entity.item.Book;
 import com.min.shop.service.BookService;
 import com.min.shop.service.MemberService;
 import com.min.shop.service.OrderService;
@@ -13,7 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -56,13 +56,13 @@ public class OrderController {
         return "order/orderSuccess";
     }
 
-    @GetMapping(value = "/orders")
-    public String orderList(@ModelAttribute("orderSearch") OrderSearch orderSearch, Model model) {
-        List<Order> orders = orderService.findOrders(orderSearch);
-        model.addAttribute("orders", orders);
-
-        return "order/orderList";
-    }
+//    @GetMapping(value = "/orders")
+//    public String orderList(@ModelAttribute("orderSearch") OrderSearch orderSearch, Model model) {
+//        List<Order> orders = orderService.findOrders(orderSearch);
+//        model.addAttribute("orders", orders);
+//
+//        return "order/orderList";
+//    }
 
     @PostMapping(value = "/orders/{orderId}/cancel")
     public String cancelOrder(@PathVariable("orderId") Long orderId) {

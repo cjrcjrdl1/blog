@@ -1,4 +1,4 @@
-package com.min.shop.web;
+package com.min.shop.web.book;
 
 import lombok.Getter;
 import lombok.Setter;

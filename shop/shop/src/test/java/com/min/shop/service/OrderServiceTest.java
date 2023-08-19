@@ -1,13 +1,9 @@
 package com.min.shop.service;
 
-import com.min.shop.domain.Address;
-import com.min.shop.domain.Member;
-import com.min.shop.domain.Order;
-import com.min.shop.domain.OrderStatus;
-import com.min.shop.domain.item.Book;
-import com.min.shop.domain.item.Item;
+import com.min.shop.entity.*;
+import com.min.shop.entity.item.Book;
+import com.min.shop.entity.item.Item;
 import com.min.shop.exception.NotEnoughStockException;
-import com.min.shop.repository.OrderRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.junit.jupiter.api.Test;
@@ -15,7 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
 @Transactional
@@ -40,7 +37,7 @@ class OrderServiceTest {
         Long orderId = orderService.order(member.getId(), item.getId(), orderCount);
 
         //then
-        Order getOrder = orderRepository.findOne(orderId);
+        Order getOrder = orderRepository.findById(orderId).get();
 
         assertEquals(OrderStatus.ORDER, getOrder.getStatus()); //상품 주문시 상태는 ORDER
         assertEquals(1, getOrder.getOrderItems().size()); //주문 상품 종류수
@@ -77,7 +74,7 @@ class OrderServiceTest {
         orderService.cancelOrder(orderId);
 
         //then
-        Order getOrder = orderRepository.findOne(orderId);
+        Order getOrder = orderRepository.findById(orderId).get();
         assertEquals(OrderStatus.CANCEL, getOrder.getStatus());
         assertEquals(10, item.getStockQuantity());
     }
