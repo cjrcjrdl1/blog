@@ -57,18 +57,18 @@
   </header>
   <div class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between">
-      <a class="p-2 text-muted" href="#">도서</a>
-      <a class="p-2 text-muted" href="#">앨범</a>
-      <a class="p-2 text-muted" href="#">영화</a>
-      <a class="p-2 text-muted" href="#">헬스</a>
+      <a class="p-2 text-muted" href="#" th:text="#{label.book}">도서</a>
+      <a class="p-2 text-muted" href="#" th:text="#{label.album}">앨범</a>
+      <a class="p-2 text-muted" href="#" th:text="#{label.movie}">영화</a>
+      <a class="p-2 text-muted" href="#" th:text="#{label.health}">헬스</a>
     </nav>
   </div>
 
   <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
     <div class="col-md-6 px-0">
-      <h1 class="display-4 font-italic">다양한 물건을 취급하고 있습니다.</h1>
-      <p class="lead my-3">저렴한 가격으로 다양한 상품들을 만나보세요!</p>
-      <p class="lead mb-0"><a href="#" class="text-info font-weight-bold">보러가기...</a></p>
+      <h1 class="display-4 font-italic" th:text="#{label.jumbotron.h1}">다양한 물건을 취급하고 있습니다.</h1>
+      <p class="lead my-3" th:text="#{label.jumbotron.p}">저렴한 가격으로 다양한 상품들을 만나보세요!</p>
+      <p class="lead mb-0"><a href="#" class="text-info font-weight-bold" th:text="#{label.jumbotron.link}">보러가기...</a></p>
     </div>
   </div>
 
@@ -76,7 +76,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 blog-main">
-        <h3 class="pb-3 mb-4 border-bottom">
+        <h3 class="pb-3 mb-4 border-bottom" th:text="#{label.book}">
           도서
         </h3>
       </div>
@@ -119,7 +119,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 blog-main">
-        <h3 class="pb-3 mb-4 border-bottom">
+        <h3 class="pb-3 mb-4 border-bottom" th:text="#{label.album}">
           앨범
         </h3>
       </div>
@@ -162,7 +162,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 blog-main">
-        <h3 class="pb-3 mb-4 border-bottom">
+        <h3 class="pb-3 mb-4 border-bottom" th:text="#{label.movie}">
           영화
         </h3>
       </div>
@@ -206,7 +206,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 blog-main">
-        <h3 class="pb-3 mb-4 border-bottom">
+        <h3 class="pb-3 mb-4 border-bottom" th:text="#{label.health}">
           헬스
         </h3>
       </div>
