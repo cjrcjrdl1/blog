@@ -1,6 +1,6 @@
 package com.min.shop.web.order;
 
-import com.min.shop.entity.Member;
+import com.min.shop.entity.member.Member;
 import com.min.shop.entity.item.Book;
 import com.min.shop.service.BookService;
 import com.min.shop.service.MemberService;

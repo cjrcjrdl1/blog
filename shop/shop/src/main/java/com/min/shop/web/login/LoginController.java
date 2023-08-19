@@ -1,6 +1,6 @@
 package com.min.shop.web.login;
 
-import com.min.shop.entity.Member;
+import com.min.shop.entity.member.Member;
 import com.min.shop.service.LoginService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;

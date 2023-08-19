@@ -1,4 +1,4 @@
-package com.min.shop.entity;
+package com.min.shop.entity.order;
 
 import com.min.shop.entity.item.Item;
 import jakarta.persistence.*;

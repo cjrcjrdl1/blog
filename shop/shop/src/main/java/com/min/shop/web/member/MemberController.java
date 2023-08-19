@@ -1,7 +1,7 @@
 package com.min.shop.web.member;
 
 import com.min.shop.entity.Address;
-import com.min.shop.entity.Member;
+import com.min.shop.entity.member.Member;
 import com.min.shop.service.MemberService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
