@@ -1,6 +1,6 @@
-package com.min.shop.domain;
+package com.min.shop.entity;
 
-import com.min.shop.domain.item.Item;
+import com.min.shop.entity.item.Item;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

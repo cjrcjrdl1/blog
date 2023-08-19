@@ -1,6 +1,6 @@
 package com.min.shop.service;
 
-import com.min.shop.domain.Member;
+import com.min.shop.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

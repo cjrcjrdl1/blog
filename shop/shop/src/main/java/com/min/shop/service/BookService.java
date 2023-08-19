@@ -1,7 +1,7 @@
 package com.min.shop.service;
 
-import com.min.shop.domain.BookRepository;
-import com.min.shop.domain.item.Book;
+import com.min.shop.entity.item.BookRepository;
+import com.min.shop.entity.item.Book;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,4 +1,4 @@
-package com.min.shop.web;
+package com.min.shop.web.login;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

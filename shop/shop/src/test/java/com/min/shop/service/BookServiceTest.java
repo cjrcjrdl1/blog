@@ -1,7 +1,7 @@
 package com.min.shop.service;
 
-import com.min.shop.domain.BookRepository;
-import com.min.shop.domain.item.Book;
+import com.min.shop.entity.item.BookRepository;
+import com.min.shop.entity.item.Book;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

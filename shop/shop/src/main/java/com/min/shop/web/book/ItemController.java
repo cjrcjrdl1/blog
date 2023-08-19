@@ -1,7 +1,6 @@
-package com.min.shop.web;
+package com.min.shop.web.book;
 
-import com.min.shop.domain.item.Book;
-import com.min.shop.domain.item.Item;
+import com.min.shop.entity.item.Book;
 import com.min.shop.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

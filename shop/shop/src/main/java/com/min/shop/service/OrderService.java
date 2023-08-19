@@ -1,9 +1,8 @@
 package com.min.shop.service;
 
-import com.min.shop.domain.*;
-import com.min.shop.domain.item.Book;
-import com.min.shop.domain.item.Item;
-import com.min.shop.repository.OrderRepository;
+import com.min.shop.entity.*;
+import com.min.shop.entity.item.Book;
+import com.min.shop.entity.item.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,13 +46,13 @@ public class OrderService {
     @Transactional
     public void cancelOrder(Long orderId) {
         //주문 엔티티 조회
-        Order order = orderRepository.findOne(orderId);
+        Order order = orderRepository.findById(orderId).get();
         //주문 취소
         order.cancel();
     }
 
     //주문 검색
-    public List<Order> findOrders(OrderSearch orderSearch) {
-        return orderRepository.findAllByString(orderSearch);
-    }
+//    public List<Order> findOrders(OrderSearch orderSearch) {
+//        return orderRepository.findAllByString(orderSearch);
+//    }
 }
