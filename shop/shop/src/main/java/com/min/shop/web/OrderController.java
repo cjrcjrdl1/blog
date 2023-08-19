@@ -11,6 +11,8 @@ import com.min.shop.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,10 +37,22 @@ public class OrderController {
     }
 
     @PostMapping(value = "/order")
-    public String order(@RequestParam("memberId") Long memberId,
-                        @RequestParam("itemId") Long itemId,
-                        @RequestParam("count") int count) {
-        orderService.order(memberId, itemId, count);
+    public String order(@Validated @ModelAttribute("dto") OrderRequestDto form,
+                        BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "order/orderFail";
+        }
+
+        Book findBook = bookService.findById(form.getItemId());
+        if (findBook.getStockQuantity() - form.getCount() < 0) {
+            bindingResult.reject("orderFail", "수량을 확인하십시오");
+            return "order/orderFail";
+        }
+
+        orderService.order(form.getMemberId(), form.getItemId(), form.getCount());
+
+
+        model.addAttribute("book", findBook);
         return "order/orderSuccess";
     }
 
