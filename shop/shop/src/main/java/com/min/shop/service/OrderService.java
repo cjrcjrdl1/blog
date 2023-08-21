@@ -23,11 +23,11 @@ public class OrderService {
 
     //주문
     @Transactional
-    public Long order(Long memberId, Long itemId, int count) {
+    public Long order(String memberId, String itemId, Integer count) {
         
         //엔티티 조회
-        Member member = memberRepository.findById(memberId).get();
-        Book book = bookRepository.findById(itemId).get();
+        Member member = memberRepository.findByName(memberId);
+        Book book = bookRepository.findByName(itemId);
 
         //배송정보 생성
         Delivery delivery = new Delivery();

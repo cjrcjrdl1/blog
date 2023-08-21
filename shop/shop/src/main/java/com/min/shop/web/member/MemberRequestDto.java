@@ -10,12 +10,16 @@ public class MemberRequestDto {
     private String loginId;
 
     @NotBlank
+    private String password;
+
+    @NotBlank
     private String name;
 
     @NotBlank
-    private String password;
     private String city;
+    @NotBlank
     private String street;
+    @NotBlank
     private String zipcode;
 
 }
