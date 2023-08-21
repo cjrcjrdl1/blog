@@ -31,17 +31,18 @@ public class LoginController {
                         @RequestParam(defaultValue = "/") String redirectURL,
                         HttpServletRequest request) {
 
+        Member loginMember = loginService.login(form.getLoginId(), form.getPassword());
+
+        if (form.getLoginId() != null && form.getPassword() != null) {
+            if (loginMember == null) {
+                bindingResult.reject("loginError");
+            }
+        }
+
         if (bindingResult.hasErrors()) {
             return "members/loginForm";
         }
 
-        Member loginMember = loginService.login(form.getLoginId(), form.getPassword());
-        log.info("login {}", loginMember);
-
-        if (loginMember == null) {
-            bindingResult.reject("loginFail", "아이디 혹은 비밀번호가 다릅니다.");
-            return "members/loginForm";
-        }
 
         HttpSession session = request.getSession();
         session.setAttribute("loginMember", loginMember);

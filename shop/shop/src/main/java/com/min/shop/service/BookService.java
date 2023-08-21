@@ -24,12 +24,16 @@ public class BookService {
         return bookRepository.findById(id).get();
     }
 
+    public Book findByName(String name) {
+        return bookRepository.findByName(name);
+    }
+
     public List<Book> findAll() {
         return bookRepository.findAll();
     }
 
     @Transactional
-    public void updateItem(Long id, String name, int price, int stockQuantity) {
+    public void updateItem(Long id, String name, Integer price, Integer stockQuantity) {
         Book book = bookRepository.findById(id).get(); //조회로 인해 영속상태
         book.setName(name); //변경감지
         book.setPrice(price);

@@ -39,17 +39,18 @@ public class OrderController {
     @PostMapping(value = "/order")
     public String order(@Validated @ModelAttribute("dto") OrderRequestDto form,
                         BindingResult bindingResult, Model model) {
+
+        Book findBook = bookService.findByName(form.getItemName());
+        if (form.getCount() != null && findBook.getStockQuantity() != null) {
+            if (findBook.getStockQuantity() - form.getCount() < 0) {
+                bindingResult.reject("needStockQuantity");
+            }
+        }
+
         if (bindingResult.hasErrors()) {
-            return "order/orderFail";
+            return "redirect:/order";
         }
-
-        Book findBook = bookService.findById(form.getItemId());
-        if (findBook.getStockQuantity() - form.getCount() < 0) {
-            bindingResult.reject("orderFail", "수량을 확인하십시오");
-            return "order/orderFail";
-        }
-
-        orderService.order(form.getMemberId(), form.getItemId(), form.getCount());
+        orderService.order(form.getMemberName(), form.getItemName(), form.getCount());
 
 
         model.addAttribute("book", findBook);
