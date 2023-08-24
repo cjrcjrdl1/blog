@@ -83,10 +83,10 @@
     <div class="card-header">
       <h4 class="my-0 font-weight-normal" th:text="${form.name}">Free</h4>
     </div>
-    <img class="card-img-top" src="../images/refactoring.jpg" alt="" width="200" height="250">
+    <img class="card-img-top" th:src="|@{/images/}${form.name}.png|" src="../images/refactoring.jpg" alt="" width="200" height="250">
     <div class="card-body">
       <h5 class="card-title" th:text="${form.name}">Card title</h5>
-      <p class="card-text">리팩토링을 제대로 배워보세요</p>
+      <p class="card-text" th:text="${form.author}">리팩토링을 제대로 배워보세요</p>
       <p class="card-text"><small class="text-muted" th:text="|현재 재고 ${form.stockQuantity}개 남았습니다.|">Last updated 3 mins ago</small></p>
       <button type="button" class="btn btn-lg btn-block btn-outline-primary" onclick="location.href='/order'">Buy</button>
     </div>
