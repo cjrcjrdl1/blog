@@ -2,6 +2,8 @@ package com.min.shop.web.order;
 
 import com.min.shop.entity.member.Member;
 import com.min.shop.entity.item.Book;
+import com.min.shop.entity.order.Order;
+import com.min.shop.entity.order.OrderSearch;
 import com.min.shop.service.BookService;
 import com.min.shop.service.MemberService;
 import com.min.shop.service.OrderService;
@@ -64,6 +66,15 @@ public class OrderController {
 //
 //        return "order/orderList";
 //    }
+//
+    @GetMapping(value = "/orders")
+    public String orderList(Model model) {
+//        List<Order> orders = orderService.findOrders(orderSearch);
+        List<Order> orders = orderService.findOrders();
+        model.addAttribute("orders", orders);
+
+        return "order/orderList";
+    }
 
     @PostMapping(value = "/orders/{orderId}/cancel")
     public String cancelOrder(@PathVariable("orderId") Long orderId) {
